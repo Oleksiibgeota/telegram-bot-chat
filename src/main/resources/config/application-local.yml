@@ -1,0 +1,51 @@
+spring:
+
+  flyway:
+    baselineOnMigrate: true
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/chat_bot_local_db
+    username: bestchat
+    password: bestchat
+    hikari:
+      connectionTimeout: 30000
+      idleTimeout: 60000
+      maxLifetime: 180000
+      maximumPoolSize: 150
+      minimumIdle: 5
+      connectionInitSql: "SELECT 1"
+      connectionTestQuery: "SELECT 1"
+      poolName: chat-core-db-pool-name
+      autoCommit: true
+
+exception:
+  handler:
+    mode: INTERNAL_ERROR
+
+
+user:
+  session:
+    ttl-size: 30
+    measurement: 'DAYS'  # HOURS, MINUTES, DAYS
+
+jwt:
+  token:
+    accessTokenSecret: 'q@#*+u!bkV4h@yWGLCdp*sT72@!cq5)A'
+    refreshTokenSecret: 'ZtmGI&I3(rYsfhDSnCM#^D%Nhbqbs!Gd'
+    access-expired: 600000
+    refresh-expired: 1800000
+
+cors:
+  origins: localhost:8080,localhost:8081,127.0.0.1:8080
+
+
+
+delays-tracking:
+  sql: 1500
+  api: 3000
+
+
+
+logging:
+  level:
+    root: info
